@@ -14,7 +14,7 @@
 <?php include("includes/header-after.php"); ?>
 
   <section class="acteurs">
-    <img src="Dsa_france.png" class="logo-acteur-presentation">
+    <img src="images/Dsa_france.png" class="logo-acteur-presentation">
     <div class="texte-presentation">
     <p>Dsa France accélère la croissance du territoire et s’engage avec les collectivités territoriales.
     Nous accompagnons les entreprises dans les étapes clés de leur évolution.

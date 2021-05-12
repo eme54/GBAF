@@ -14,7 +14,7 @@
 <?php include("includes/header-after.php"); ?>
 
   <section class="acteurs">
-    <img src="CDE.png" class="logo-acteur-presentation">
+    <img src="images/CDE.png" class="logo-acteur-presentation">
     <div class="texte-presentation">
     <p>La CDE (Chambre Des Entrepreneurs) accompagne les entreprises dans leurs démarches de formation. 
     Son président est élu pour 3 ans par ses pairs, chefs d’entreprises et présidents des CDE.</p>

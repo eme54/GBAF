@@ -14,7 +14,7 @@
 <?php include("includes/header-after.php"); ?>
 
   <section class="acteurs">
-    <img src="protectpeople.png" class="logo-acteur-presentation">
+    <img src="images/protectpeople.png" class="logo-acteur-presentation">
     <div class="texte-presentation">
     <p>Protectpeople finance la solidarité nationale.
     Nous appliquons le principe édifié par la Sécurité sociale française en 1945&thinsp;: permettre à chacun de bénéficier d’une protection sociale.
