@@ -11,38 +11,46 @@
 <body>
 
 <!--header-->
-<?php include("includes/header-after.php"); ?>
-  
+<?php include("includes/header-after.php"); 
+
+//Requête pour récupérer les informations de compte
+$reponse=$bdd->query('SELECT lastname,name,username,question,answer FROM GBAF_account WHERE username="'.$_SESSION['username'].'"');
+$donnees=$reponse->fetch();
+?>
   <section class="inscription">
   	<h1 class="h1-blanc">Vos informations personnelles</h1>
-  	<form method="post" action="traitement.php" class="champs-inscription">
+  	<form method="post" action="actions/compte.php" class="champs-inscription">
   		<br>
-  		<p><label for="nom">Nom</label> <br>
-  			<input type="text" name="nom" required ></p> <br>
-  		<p><label for="prenom">Prénom</label> <br>
-  			<input type="text" name="prenom" required ></p> <br><br>
-  		<p><label for="utilisateur">Nom d'utilisateur</label> <br>
-  			<input type="text" name="utilisateur" required ></p> <br>
-  		<p><label for="motdepasse">Mot de passe</label> <br>
-  			<input type="password" name="motdepasse" required ></p><br>
-  		<p><label for="motdepasse">Confirmation du mot de passe</label> <br>
-  			<input type="password" name="motdepasse" required ></p><br><br>	
+		<p><label for="lastname">Nom</label> <br>
+  			<input id="lastname" type="text" name="lastname" required value="<?= $donnees['lastname']?>"></p><br>
+  		<p><label for="name">Prénom</label> <br>
+  			<input id="name" type="text" name="name" required value="<?= $donnees['name']?>" ></p><br>
+  		<p><label for="username">Nom d'utilisateur</label> <br>
+  			<input id="username" type="text" name="username" required value="<?= $donnees['username']?>" ></p><br>
   		<p>
-  		<label>Question secrète</label><br>	
- 		 <select required>
-   				<option value="animal">Quel est le nom de votre premier animal de compagnie ?</option>
-   				<option value="parents">Dans quelle ville se sont rencontrés vos parents ?</option>
-   				<option value="amour">Quel est le prénom de votre premier amour ?</option>
-   				<option value="film">Quelle est votre film préféré ?</option>
-   				<option value="chanson">Quel est votre chanson péférée ?</option>
-   				<option value="metier">Quel était votre métier de rêve étant enfant ?</option>
+  		<label for="question">Question secrète</label><br>
+ 		<select id="question" name="question" required>
+		 		<optgroup label="Choix enregistré&thinsp;:">
+				 	<option selected ><?= $donnees['question']?></option>
+				</optgroup>
+				<optgroup label="Tous les choix&thinsp;:">
+					<option value="Quel est le nom de votre premier animal de compagnie ?">Quel est le nom de votre premier animal de compagnie ?</option>
+   					<option value="Dans quelle ville se sont rencontrés vos parents ?">Dans quelle ville se sont rencontrés vos parents ?</option>
+   					<option value="Quel est le prénom de votre premier amour ?">Quel est le prénom de votre premier amour ?</option>
+   					<option value="Quel est votre film préféré ?">Quel est votre film préféré ?</option>
+   					<option value="Quelle est votre chanson péférée ?">Quelle est votre chanson péférée ?</option>
+   					<option value="Quel était votre métier de rêve étant enfant ?">Quel était votre métier de rêve étant enfant ?</option>
+				</optgroup>
   		</select>
 		</p><br>	
-		<p><label for="reponse">Réponse</label> <br>
-  			<input type="text" name="reponse" required ></p>
+		<p><label for="answer">Réponse</label> <br>
+  			<input id="answer" type="text" name="answer" required value="<?= $donnees['answer']?>" ></p><br>
 
+		<p><input type="submit" value="Modifier"></p>
+		
+		<p>Changer de mot de passe&thinsp;?</p><a href="new_pass.php">Créez en un nouveau&thinsp;!</a>
 
-  		<button>Modifier</button>
+	<?php $reponse->closeCursor();?>
   	</form>
   </section>
 
