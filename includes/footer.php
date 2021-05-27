@@ -1,5 +1,7 @@
   <footer>
+
   	<div class="liens-footer">
-  		<a href="">Mentions légales  </a>|<a href="">  Contact</a>
+  		<a href="">Mentions légales</a>
   	</div>
+
   </footer>
