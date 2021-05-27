@@ -1,35 +1,54 @@
+<?php 
+session_start();
+?>
+
+
 <!doctype html>
 <html lang="fr">
 
-<head>
-  <meta charset="utf-8">
-  	  <!--Responsive-->
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Nouveau mot de passe</title>
-  <link rel="stylesheet" href="style.css">
-</head>
+	<head>
+	<meta charset="utf-8">
+	<!--Responsive-->
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Nouveau mot de passe</title>
+		<link rel="stylesheet" href="style.css">
+	</head>
 
-<body>
+	<body>
 
-<!--header-->
-<?php include("includes/header-before.php"); ?>
+		<?php
+		//header 
+		include("includes/header-before.php"); 
+		?>
 
-<section class="connexion">
-  	<form action="actions/new_pass.php" method="POST"class="champs-connexion">
-  		<p><label for="username">Nom d'utilisateur</label> <br>
-  			<input id="username" type="text" name="username" required ></p> <br>
+		<!--Main-->
+		<section class="connexion">
 
-      	<p><input type="submit" value="Valider"></p>
+			<!--New pass form step 1-->
+			<form action="actions/new_pass.php" method="POST"class="champs-connexion">
 
-  		<p>Pas encore de compte ?</p><a href="inscription.php">Inscrivez-vous !</a>
-	
-  	</form>
-  </section>
+				<p>
+					<label for="username">Nom d'utilisateur</label> 
+					<br>
+					<input id="username" type="text" name="username" required >
+				</p> 
+				<br>
+				<p>
+					<input type="submit" value="Valider">
+				</p>
 
-<?php
-//footer
-include("includes/footer.php");
-?>
-</body>
+				<p>Pas encore de compte ?</p><a href="inscription.php">Inscrivez-vous !</a>
+			
+			</form>
+
+		</section>
+
+		<?php
+		//footer
+		include("includes/footer.php");
+		?>
+		
+	</body>
+
 </html>
