@@ -1,88 +1,128 @@
 <!doctype html>
 <html lang="fr">
-<head>
-  <meta charset="utf-8">
-  	  <!--Responsive-->
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GBAF Accueil</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
 
-<!--header-->
-<?php include("includes/header-after.php"); ?>
+    <head>
+      <meta charset="utf-8">
+      <!--Responsive-->
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>GBAF Accueil</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+
+
+    <body>
+
+
+      <?php 
+      //header
+      include("includes/header-after.php"); 
+      ?>
   
-  <section class="presentation">
-    <h1 class="h1-blanc"> Qui sommes nous&thinsp;? </h1>
-    <div class="texte-presentation"><p><span>Le Groupement Banque Assurance Français</span> (GBAF) est une fédération représentant les 6 grands groupes français&thinsp;:</p><br>
-      <ul>
-      <li>  ●&ensp;&ensp;BNP Paribas&thinsp;;</li> 
-      <li>  ●&ensp;&ensp;BPCE&thinsp;;</li> 
-      <li>  ●&ensp;&ensp;Crédit Agricole&thinsp;;</li> 
-      <li>  ●&ensp;&ensp;Crédit Mutuel-CIC&thinsp;;</li> 
-      <li>  ●&ensp;&ensp;Société Générale&thinsp;;</li> 
-      <li>  ●&ensp;&ensp;La Banque Postale.</li> 
-    </ul><br>
-    <p>Même s’il existe une forte concurrence entre ces entités, elles vont toutes travailler de la même façon pour gérer près de 80 millions de comptes sur le territoire national.<br>
-    Le GBAF est le représentant de la profession bancaire et des assureurs sur tous les axes de la réglementation financière française. Sa mission est de promouvoir l'activité bancaire à l’échelle nationale. C’est aussi un interlocuteur privilégié despouvoirs publics.</p>
-    </div>
-  </section>
+      <!--Main-->
+      <section class="presentation">
 
-  <section class="acteurs">
-    <h2> Nos acteurs </h2>
-    <div class="bloc-acteur"> 
-      <img src="formation_co.png" class="logo-acteur">
-      <div class="description-acteur">
-        <h3>Formation&co<h3>
-        <p>Formation&co est une association française présente sur tout le territoire. Nous proposons à des personnes issues de tout...</p> 
-        <div class="bloc-bas-acteur">
-          <a class="ensavoirplus" href="Formations&co.html">En savoir plus</a>  
-          <button class="bouton-avis"> <img src="like.svg"></button>
-          <button class="bouton-avis"> <img src="dislike.svg"></button>
-        </div>
-      </div>
-    </div>
-    <div class="bloc-acteur"> 
-      <img src="protectpeople.png" class="logo-acteur">
-      <div class="description-acteur">
-        <h3>Protectpeople<h3>
-        <p>Protectpeople finance la solidarité nationale. Nous appliquons le principe édifié par la Sécurité sociale française en 1945...</p>
-        <div class="bloc-bas-acteur">
-          <a class="ensavoirplus" href="Protectpeople.html"> En savoir plus</a>
-          <button class="bouton-avis"> <img src="like.svg"></button>
-          <button class="bouton-avis"> <img src="dislike.svg"></button>
-        </div>
-      </div>
-    </div>
-    <div class="bloc-acteur"> 
-      <img src="Dsa_france.png" class="logo-acteur">
-      <div class="description-acteur">
-       <h3>Dsa France<h3>
-       <p>Dsa France accélère la croissance du territoire et s’engage avec les collectivités territoriales. Nous accompagnons les entreprises...</p>
-       <div class="bloc-bas-acteur">
-          <a class="ensavoirplus" href="DSAFrance.html">En savoir plus</a>  
-          <button class="bouton-avis"> <img src="like.svg"></button>
-          <button class="bouton-avis"> <img src="dislike.svg"></button>
-        </div>
-      </div>
-    </div>
-    <div class="bloc-acteur"> 
-      <img src="CDE.png" class="logo-acteur">
-      <div class="description-acteur">
-       <h3>CDE<h3>
-       <p> La CDE (Chambre Des Entrepreneurs) accompagne les entreprises dans leurs démarches de formation...</p>
-      <div class="bloc-bas-acteur">
-          <a class="ensavoirplus" href="CDE.html" >En savoir plus</a>  
-          <button class="bouton-avis"> <img src="like.svg"></button>
-          <button class="bouton-avis"> <img src="dislike.svg"></button>
-        </div>
-      </div>
-    </div>
-  </section>
+        <!--GBAF introduction-->
+        <h1 class="h1-blanc"> Qui sommes-nous&thinsp;? </h1>
 
-<!--footer-->
-<?php include("includes/footer.php"); ?>
+          <div class="texte-presentation">
+            <p>
+              <span>Le Groupement Banque Assurance Français</span> (GBAF) est une fédération représentant les 6 grands groupes français&thinsp;:
+            </p>
+            <br>
+            <ul>
+              <li>  ●&ensp;&ensp;BNP Paribas&thinsp;;</li> 
+              <li>  ●&ensp;&ensp;BPCE&thinsp;;</li> 
+              <li>  ●&ensp;&ensp;Crédit Agricole&thinsp;;</li> 
+              <li>  ●&ensp;&ensp;Crédit Mutuel-CIC&thinsp;;</li> 
+              <li>  ●&ensp;&ensp;Société Générale&thinsp;;</li> 
+              <li>  ●&ensp;&ensp;La Banque Postale.</li> 
+            </ul>
+            <br>
+            <p>
+            Même s’il existe une forte concurrence entre ces entités, elles vont toutes travailler de la même façon pour gérer près de 80 millions de comptes sur le territoire national.
+            <br>
+            Le GBAF est le représentant de la profession bancaire et des assureurs sur tous les axes de la réglementation financière française. Sa mission est de promouvoir l'activité bancaire à l’échelle nationale. 
+            C’est aussi un interlocuteur privilégié despouvoirs publics.
+            </p>
+          </div>
 
-</body>
+      </section>
+
+      <section class="acteurs">
+
+        <!--Actors list-->
+        <h2> Nos acteurs </h2>
+      
+          <?php 
+          //SQL Request to show actors
+          $reponse=$bdd->query('SELECT * FROM GBAF_actor ORDER BY id_actor DESC LIMIT 0,5');
+
+          while ($donnees=$reponse->fetch())
+          { ?>
+              
+              <div id="<?php $donnees['id_actor']?>" class="bloc-acteur"> 
+
+                <?=('<img src="/images/'.$donnees['logo'].'"class="logo-acteur">')?>
+                
+                  <div class="description-acteur">
+                    <h3><?= htmlspecialchars($donnees['actor']);?><h3>
+                      <p><?= substr(($donnees['description']),0,90);?>...</p>
+
+                    <div class="bloc-bas-acteur">
+
+                      <?php 
+                      //SQL Request to count votes likes/dislikes
+                      $likes = $bdd->prepare('SELECT vote FROM GBAF_vote WHERE id_actor = ? AND vote= ?');
+                      $likes->execute(array($donnees['id_actor'],1));
+                      $likes = $likes->rowCount();
+
+                      $dislikes = $bdd->prepare('SELECT vote FROM GBAF_vote WHERE id_actor = ? AND vote= ?');
+                      $dislikes->execute(array($donnees['id_actor'],2));
+                      $dislikes = $dislikes->rowCount();
+                      ?>
+
+                      <a class="ensavoirplus" href="acteur.php?act=<?php echo $donnees['id_actor'];?>">En savoir plus</a>  
+                      <a href="actions/vote.php?act=<?php echo $donnees['id_actor'];?>&type=1" class="bouton-avis" onclick="play()"> <img src="/images/like.svg"></a>
+
+                      <?='<p>'.$likes.'</p>';?>
+
+                      <a href="actions/vote.php?act=<?php echo $donnees['id_actor'];?>&type=2" class="bouton-avis" onclick="play()"> <img src="/images/dislike.svg"></a>
+
+                      <?='<p>'.$dislikes.'</p>';?>
+
+                    </div>
+
+                  </div>
+
+              </div>
+              <br>
+
+            <?php
+          }
+
+          //Close Request
+          $reponse->closeCursor();
+          ?>
+
+
+      <?php
+      //footer 
+      include("includes/footer.php"); 
+      ?>
+
+      <!--Animation likes/dislikes script-->
+      <script type="text/javascript">
+        function play() {
+          document.querySelector(".bouton-avis").className = "bouton-avis";
+          window.requestAnimationFrame(function(time) {
+            window.requestAnimationFrame(function(time) {
+              document.querySelector(".bouton-avis").className = "bouton-avis changing";
+            });
+          });
+        }
+      </script>
+
+    </body>
+
 </html>
