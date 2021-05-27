@@ -1,6 +1,6 @@
 <?php 
 
-//Connexion BDD
+//Database connexion
 try
 {
     $bdd=new PDO('mysql:host=localhost;dbname=GBAF;charset=utf8','root','root');
