@@ -74,9 +74,11 @@ overflow-x: hidden;
 display:block;}
 a{outline-style: none;
 font-family:'open_sanssemibold';
+font-size: medium;
 color:#ec3323;
-text-decoration: none;}
-input{outline-style: none;}
+text-decoration: none;
+}
+input,textarea{outline-style: none;}
 p,ul,li{font-family:'open_sansregular';
 line-height:1.8;
 color: #404040;
@@ -88,10 +90,11 @@ span{font-family:'open_sanssemibold'; }
 
 header {display:flex;
 justify-content:space-between;
+align-items: center;
 z-index:2;
 top:0;
 position: sticky;
-height:200px;
+height:15vh;
 width:100%;
 background-color: white;
 box-shadow: 2px 2px 12px rgba(0,0,0,0.2);}
@@ -109,9 +112,8 @@ margin-left: 80px;}
 .repere-utilisateur{display:inline-block;
 align-items: flex-end;
 width:50%;
-top:0px;
-margin-right:80px;
-padding-top: 70px;}
+top:0;
+margin-right:80px;}
 
 .texte-utilisateur{display:block;
 float:right;
@@ -119,21 +121,20 @@ padding-right: 50px;
 padding-top: 18px;}
 
 .icone-utilisateur{display:block;
-width:80px;
-float:right;}
+width:100px;
+float:right;
+padding-top: 10px;}
+
 /* body */
 
-.connexion{display:block;
+.connexion,.inscription,.post_form{display:block;
 padding-top: 50px;
 background:linear-gradient(-200deg,#870E1F,#ec3323 60%,#870E1F);
-width:100%;
-min-height:75vh;}
+width:100%;}
 
-.inscription{display:block;
-padding-top: 50px;
-background:linear-gradient(-200deg,#870E1F,#ec3323 60%,#870E1F);
-width:100%;
-min-height:75vh;}
+.connexion,.inscription{height:85vh;}
+
+.post_form{height:30vh;}
 
 h1{text-align: center;
 font-family:'open_sansbold'; 
@@ -154,23 +155,20 @@ font-size:25px;
 margin-bottom:30px;
 color:#404040;;}
 
-.champs-connexion{display:block;
+.champs-connexion,.champs-inscription,.champs-post{display:block;
 width:30%;
 margin:auto;
-align-items: center;
-padding: 40px;
-text-align: center;
+align-items:center;
+text-align:center;
 background-color: white;
 border-radius:20px;}
 
-.champs-inscription{display:block;
-width:30%;
-margin:auto;
-align-items: center;
+.champs-inscription{
 padding: 20px;
-text-align: center;
-background-color: white;
-border-radius:20px;}
+}
+.champs-connexion{
+padding: 40px;
+}
 
 label{font-family:'open_sansregular';
 font-size: 18px;}
@@ -181,7 +179,12 @@ border-right: none;
 border-bottom: 2px #ec3323 solid ;
 outline: 0;
 height:25px;
-width:80%;}
+width:80%;
+text-align: center;}
+
+input:focus{
+border-bottom: 2px #000000 solid ;
+}
 
 input[type="submit"]
 {border-radius:5px;
@@ -200,6 +203,12 @@ input[type="submit"]:hover{
 background-color:white;
 color:#ec3323;}
 
+textarea{
+border:2px #ec3323 solid;
+width:80%;
+resize:none;
+}
+
 
 select{border-radius:5px;
 border: 2px #ec3323 solid;
@@ -212,6 +221,7 @@ select:hover{background-color:#ec3323;
 border:none;
 color:white;
 outline:none;}
+
 
 button{border-radius:5px;
 border: 2px #ec3323 solid;
@@ -228,7 +238,12 @@ button:hover{
 background-color:white;
 color:#ec3323;}
 
-.presentation, .acteurs{display:block;
+.message_alert{
+text-align:center;
+color:#ec3323;
+}
+
+.presentation,.acteurs,.posts{display:block;
 padding-top: 50px;
 margin:auto;
 width:100%;}
@@ -236,15 +251,22 @@ width:100%;}
 .presentation{background:linear-gradient(-200deg,#870E1F,#ec3323 60%,#870E1F); 
 padding-bottom:100px;}
 
-.acteurs{margin-bottom:100px;}
+.acteurs,.posts{margin-bottom:100px;}
 
-.texte-presentation{display:block;
+.texte-presentation,.post_presentation{display:block;
 width:30%;
 margin:auto;
 padding: 20px 40px 20px 40px;
 text-align: left;
 background-color:white;
 border-radius:20px;}
+
+.text_post{display:block;
+background-color:#ec3323;
+color:white;
+border-radius:30px;
+border: 2px #ec3323 solid;
+padding-left: 5px;}
 
 .bloc-acteur{display:block;
 align-items:center;
@@ -271,8 +293,9 @@ width:65%;}
 
 .bloc-bas-acteur{display:inline-flex;
 width:100%;
+margin-top: 30px;
 height:auto;
-align-items:center;
+align-items: center;
 }
 
 .ensavoirplus{width:30%;
@@ -294,14 +317,28 @@ color:#ec3323;}
 .bouton-avis{display:block;
 background-color:transparent;
 border:none;
-width:60px;
-margin-right:5px;
-margin-top:55px;
+width:40px;
+margin-right:15px;
+margin-left:15px;
 float:right;
 }
 
 .bouton-avis:hover{opacity:0.5;}
 
+@keyframes sizechange{
+    0%{width:40px;}
+    50%{width:60px;}
+    100%{width:60px;}
+}
+
+.changing {
+  animation: sizechange 2s;
+  }
+
+.lien_retour{text-align:center;
+margin:auto;
+display:block;
+width:30%;}
 
 
 /* footer */
@@ -320,7 +357,7 @@ margin:auto;
 /* TABLETTE */
 @media(max-width:900px)
 {   /* header */
-    header{height:120px;}
+    header{height:10vh;}
     .logo-header-centre{width: 80px;
     padding-top: 5px;}
     /* body */
@@ -329,6 +366,7 @@ margin:auto;
     a{font-size: 13px;}
     label{font-size:16px;}
     button{font-size: 13px;}
+    .connexion,.inscription{height:90vh;}
     .champs-connexion{width:50%;}
     .champs-inscription{width:50%;}
 }
@@ -338,7 +376,7 @@ margin:auto;
 /* PORTABLE */
 @media(max-width:425px)
 {   /* header */
-    header{height:100px;}
+    header{height:15vh;}
     .logo-header-centre{width:70px;
         padding-top: 0px;}
     /* body */
@@ -348,12 +386,11 @@ margin:auto;
     label{font-size:14px;}
     button{font-size: 12px;}
     .champs-connexion{width:70%;}
-    .connexion {min-height: 85vh;
-    padding-top: 30px;}
+    .connexion,.inscription{height:135vh;
+    padding-top:30px;}
+    .champs-connexion{width:70%;}
     .champs-inscription{width:70%;
     padding:10px; }
-    .inscription {min-height: 130vh;
-    padding-top: 30px;}
 }
 
 
