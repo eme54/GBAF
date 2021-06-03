@@ -16,7 +16,7 @@
 
       <?php 
       //header
-      include("includes/header-after.php"); 
+      include_once("includes/header-after.php"); 
       ?>
   
       <!--Main-->
@@ -56,14 +56,15 @@
       
           <?php 
           //SQL Request to show actors
-          $reponse=$bdd->query('SELECT * FROM GBAF_actor ORDER BY id_actor DESC LIMIT 0,5');
+          //$reponse=$bdd->query('SELECT * FROM GBAF_actor LEFT JOIN GBAF_vote ON GBAF_actor.id_actor = GBAF_vote.id_actor ORDER BY id_actor DESC');
+          $reponse=$bdd->query('SELECT a.*, COUNT(CASE WHEN v.vote = 1 THEN 1 END) AS count_likes, COUNT(CASE WHEN v.vote = 2 THEN 1 END) AS count_dislikes 
+          FROM GBAF_actor AS a LEFT JOIN GBAF_vote AS v ON a.id_actor = v.id_actor GROUP BY a.id_actor ORDER BY a.id_actor DESC');
 
           while ($donnees=$reponse->fetch())
           { ?>
-              
               <div id="<?php $donnees['id_actor']?>" class="bloc-acteur"> 
 
-                <?=('<img src="/images/'.$donnees['logo'].'"class="logo-acteur">')?>
+                <?=('<img src="images/'.$donnees['logo'].'"class="logo-acteur">')?>
                 
                   <div class="description-acteur">
                     <h3><?= htmlspecialchars($donnees['actor']);?><h3>
@@ -71,25 +72,14 @@
 
                     <div class="bloc-bas-acteur">
 
-                      <?php 
-                      //SQL Request to count votes likes/dislikes
-                      $likes = $bdd->prepare('SELECT vote FROM GBAF_vote WHERE id_actor = ? AND vote= ?');
-                      $likes->execute(array($donnees['id_actor'],1));
-                      $likes = $likes->rowCount();
-
-                      $dislikes = $bdd->prepare('SELECT vote FROM GBAF_vote WHERE id_actor = ? AND vote= ?');
-                      $dislikes->execute(array($donnees['id_actor'],2));
-                      $dislikes = $dislikes->rowCount();
-                      ?>
-
                       <a class="ensavoirplus" href="acteur.php?act=<?php echo $donnees['id_actor'];?>">En savoir plus</a>  
-                      <a href="actions/vote.php?act=<?php echo $donnees['id_actor'];?>&type=1" class="bouton-avis" onclick="play()"> <img src="/images/like.svg"></a>
+                      <a href="actions/vote.php?act=<?php echo $donnees['id_actor'];?>&type=1" class="bouton-avis" onclick="play()"> <img src="images/like.svg"></a>
 
-                      <?='<p>'.$likes.'</p>';?>
+                      <?='<p>'.$donnees['count_likes'].'</p>';?>
 
-                      <a href="actions/vote.php?act=<?php echo $donnees['id_actor'];?>&type=2" class="bouton-avis" onclick="play()"> <img src="/images/dislike.svg"></a>
+                      <a href="actions/vote.php?act=<?php echo $donnees['id_actor'];?>&type=2" class="bouton-avis" onclick="play()"> <img src="images/dislike.svg"></a>
 
-                      <?='<p>'.$dislikes.'</p>';?>
+                      <?='<p>'.$donnees['count_dislikes'].'</p>';?>
 
                     </div>
 
@@ -108,7 +98,7 @@
 
       <?php
       //footer 
-      include("includes/footer.php"); 
+      include_once("includes/footer.php"); 
       ?>
 
       <!--Animation likes/dislikes script-->
