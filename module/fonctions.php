@@ -14,4 +14,10 @@ function showAlert()
 	}
 }
 
+function redirection($page)
+{
+	header('Location:' .ROOT_URL. '/' .$page);
+	exit();
+}
+
 ?>
