@@ -20,7 +20,7 @@ $username = $reponse -> fetch();
         setAlert('<p class="message_alert"> Ce nom d\'utilisateur est déjà utilisé.</p>');
         redirection('inscription.php');
     }
-    elseif (($_POST['password'] != $_POST['password2']) OR (!preg_match("#^.{8,}$#", $_POST['password'])))
+    elseif ($_POST['password'] != $_POST['password2'] OR !preg_match("#^.{8,}$#", $_POST['password']))
     //Alert if the 2 passwords typed don't respect our terms
     {
         setAlert('<p class="message_alert"> Les deux mots de passe entrés sont différents ou votre mot de passe est trop court. </p>');

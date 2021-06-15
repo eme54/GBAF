@@ -20,7 +20,7 @@ $answer = $reponse -> fetch();
       setAlert('<p class="message_alert">La réponse est incorrecte.</p>');
       redirection('new_pass_step2.php');
    }
-   elseif ((isset($_POST['answer'])) AND (strtolower($_POST['answer']) == strtolower($answer['answer'])))
+   elseif (isset($_POST['answer']) AND strtolower($_POST['answer']) == strtolower($answer['answer']))
    //Good answer
    {  
       //Close Request

@@ -9,7 +9,7 @@ require_once '../root.php';
 require_once ROOT_DIR.'/module/fonctions.php'; 
 
 //Alert if the 2 passwords typed don't respect our terms
-if (($_POST['new_password'] != $_POST['new_password2']) OR (!preg_match("#^.{8,}$#", $_POST['new_password'])))
+if ($_POST['new_password'] != $_POST['new_password2'] OR !preg_match("#^.{8,}$#", $_POST['new_password']))
 {
     setAlert('<p class="message_alert"> Les deux mots de passe entrés sont différents ou votre nouveau mot de passe est trop court. </p>');
     redirection('new_pass_step3.php');

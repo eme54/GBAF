@@ -13,7 +13,7 @@ require_once ROOT_DIR.'/module/fonctions.php';
 //SQL Request to find id and hash password with username in Database
 $req = $bdd -> prepare('SELECT id_user,password FROM GBAF_account WHERE username = :username');
 $req -> execute(array(
-	'username'=>$_POST['username']));
+	'username' => $_POST['username']));
 
 	if ($req->rowCount() != 1)
 	//Username no found

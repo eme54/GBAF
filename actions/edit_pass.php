@@ -23,7 +23,7 @@ if (password_verify($_POST['old_password'], $verification['password']))
         $reponse -> closeCursor();
 
         //Alert if the 2 passwords typed don't respect our terms
-        if (($_POST['new_password'] != $_POST['new_password2']) OR (!preg_match("#^.{8,}$#", $_POST['new_password'])))
+        if ($_POST['new_password'] != $_POST['new_password2'] OR !preg_match("#^.{8,}$#", $_POST['new_password']))
         {
             setAlert('<p class="message_alert"> Les deux nouveaux mots de passe entrés sont différents ou votre nouveau mot de passe est trop court. </p>');
             redirection('edit_pass.php');
@@ -42,7 +42,7 @@ if (password_verify($_POST['old_password'], $verification['password']))
                 'id_user' => $_SESSION['id_user']
             ));
             
-            setAlert('<p class="message_alert"> Votre nouveau mot de passe a bien été mis à jour. </p>');
+            setAlert('<p class="message_alert"> Votre mot de passe a bien été mis à jour. </p>');
             redirection('compte.php');
         } 
 
