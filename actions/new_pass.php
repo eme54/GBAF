@@ -2,36 +2,41 @@
 
 session_start();
 
+//ROOT
+require_once '../root.php';
+
 //Database connexion
-require '/Users/eme/Documents/GBAF/module/connexion_bdd.php';
+require_once ROOT_DIR.'/module/connexion_bdd.php';
+//Call function
+require_once ROOT_DIR.'/module/fonctions.php'; 
 
 //SQL Request to verify if the username already exists in Database
-$reponse=$bdd->query('SELECT username FROM GBAF_account WHERE username="'.$_POST['username'].'"');
-$username=$reponse->fetch();
+$reponse = $bdd -> query('SELECT id_user,username FROM GBAF_account WHERE username = "'.$_POST['username'].'"');
+$verification = $reponse -> fetch();
 
-   if (strtolower($_POST['username'])!=strtolower($username['username']))
-   //Alert if the username already exists
+   if (strtolower($_POST['username']) != strtolower($verification['username']))
+   //Alert if the username doesn't exist
    {
-      $_SESSION['alert']='<p class="message_alert">Ce nom d\'utilisateur n\'existe pas.</p>';
-      header('Location: http://localhost:8888/new_pass.php');
-      exit();
+      setAlert('<p class="message_alert">Ce nom d\'utilisateur n\'existe pas.</p>');
+      redirection('new_pass.php');
    }
-   elseif (strtolower($_POST['username'])==strtolower($username['username']))
+   //Correct username
+   elseif (strtolower($_POST['username']) == strtolower($verification['username']))
    {  
       //Close Request
-      $reponse->closeCursor();
+      $reponse -> closeCursor();
 
-      $_SESSION['username']=$_POST['username'];
+      $_SESSION['id_user'] = $verification['id_user'];
 
       //SQL Request to find the secret question in Database
-      $reponse=$bdd->query('SELECT question FROM GBAF_account WHERE username="'.$_SESSION['username'].'"');
-      $donnees=$reponse->fetch(); 
-      $_SESSION['question']=$donnees['question'];
+      $reponse = $bdd -> query('SELECT question FROM GBAF_account WHERE id_user = "'.$_SESSION['id_user'].'"');
+      $donnees = $reponse -> fetch(); 
+      
+      $_SESSION['question'] = $donnees['question'];
          
       //Close Request
-      $reponse->closeCursor(); 
+      $reponse -> closeCursor(); 
 
-      header('Location: http://localhost:8888/new_pass_step2.php');
-      exit();
+      redirection('new_pass_step2.php');
    }
 ?>
