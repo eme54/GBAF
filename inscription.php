@@ -21,7 +21,7 @@ session_start();
 
 		<?php
 		//header 
-		include("includes/header-before.php"); 
+		include_once("includes/header-before.php"); 
 		?>
 
 		<!--Main-->
@@ -65,15 +65,18 @@ session_start();
 					<br>
 					<br>	
 					<p>
-						<label for="question">Question secrète</label><br>	
-						<select id="question" name="question" required>
-							<option value="Quel est le nom de votre premier animal de compagnie ?">Quel est le nom de votre premier animal de compagnie ?</option>
-							<option value="Dans quelle ville se sont rencontrés vos parents ?">Dans quelle ville se sont rencontrés vos parents ?</option>
-							<option value="Quel est le prénom de votre premier amour ?">Quel est le prénom de votre premier amour ?</option>
-							<option value="Quel est votre film préféré ?">Quel est votre film préféré ?</option>
-							<option value="Quelle est votre chanson péférée ?">Quelle est votre chanson péférée ?</option>
-							<option value="Quel était votre métier de rêve étant enfant ?">Quel était votre métier de rêve étant enfant ?</option>
-						</select>
+						<label for="question">Question secrète<br>	
+							<span class="questions">
+								<select id="question" name="question" required >
+									<option value="Quel est le nom de votre premier animal de compagnie ?">Quel est le nom de votre premier animal de compagnie ?</option>
+									<option value="Dans quelle ville se sont rencontrés vos parents ?">Dans quelle ville se sont rencontrés vos parents ?</option>
+									<option value="Quel est le prénom de votre premier amour ?">Quel est le prénom de votre premier amour ?</option>
+									<option value="Quel est votre film préféré ?">Quel est votre film préféré ?</option>
+									<option value="Quelle est votre chanson péférée ?">Quelle est votre chanson péférée ?</option>
+									<option value="Quel était votre métier de rêve étant enfant ?">Quel était votre métier de rêve étant enfant ?</option>
+								</select>
+							</span>
+						</label>
 					</p>
 					<br>	
 					<p>
@@ -91,7 +94,7 @@ session_start();
 
 		<?php 
 		//footer
-		include("includes/footer.php"); 
+		include_once("includes/footer.php"); 
 		?>
 
 	</body>
