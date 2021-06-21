@@ -97,6 +97,7 @@ if(isset($_GET['type'],$_GET['act']) AND !empty($_GET['type']) AND !empty($_GET[
 
     //Direct redirection
     redirection($page);
-
+}
 
 ?>
+
