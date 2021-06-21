@@ -21,7 +21,7 @@ session_start();
 
 		<?php
 		//header 
-		include("includes/header-before.php");
+		include_once("includes/header-before.php");
 		?>
 
 		<!--Main-->
@@ -55,7 +55,7 @@ session_start();
  
 		<?php
 		//footer 
-		include("includes/footer.php"); 
+		include_once("includes/footer.php"); 
 		?>
 
 	</body>
