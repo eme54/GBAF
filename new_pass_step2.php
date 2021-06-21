@@ -19,12 +19,12 @@ session_start();
 
     <?php 
     //header
-    include("includes/header-before.php");
+    include_once("includes/header-before.php");
 
     //Main
 
     //Database connexion
-    require '/Users/eme/Documents/GBAF/module/connexion_bdd.php';
+    require 'module/connexion_bdd.php';
 
     //Show question found in Database, New pass form step 2
     echo '<section class="connexion">
@@ -49,7 +49,7 @@ session_start();
 
 
     //footer
-    include("includes/footer.php");
+    include_once("includes/footer.php");
     ?>
 
   </body>
