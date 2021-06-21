@@ -1,3 +1,7 @@
+<?php 
+session_start();
+?>
+
 <!doctype html>
 <html lang="fr">
 
@@ -16,23 +20,40 @@
         <?php 
         //header
         include("includes/header-after.php"); 
-
+ 
         //Main
-        if ((isset($_GET['act'])) AND (!empty($_GET['act'])))
-        {
-            //Security typecast
-            $getact = (int) $_GET['act'];
 
-            //SQL Request to show the targeted actor
-            $req=$bdd->prepare('SELECT id_actor, actor, description, logo FROM GBAF_actor WHERE id_actor=?');
+        //SQL Request to verify the parameter act
+        $req=$bdd->prepare('SELECT id_actor FROM GBAF_actor WHERE id_actor = :getact');
+        $req->execute(array(
+        'getact'=>$_GET['act']));
+    
+        if ($req->rowCount()!=1)
+        //Actor not found
+        {
+            //Close request
+            $req->closeCursor();
+
+            //Redirection to Home page
+            header('Location: accueil.php');
+            exit();   
+        }
+    
+        else
+        {
+
+            $getact = $_GET['act'];
+
+            //SQL Request to show the targeted actor and his number of Likes/Dislikes
+            $req=$bdd->prepare('SELECT a.*, COUNT(CASE WHEN v.vote = 1 THEN 1 END) AS count_likes, COUNT(CASE WHEN v.vote = 2 THEN 1 END) AS count_dislikes
+            FROM GBAF_actor AS a LEFT JOIN GBAF_vote AS v ON a.id_actor = v.id_actor WHERE a.id_actor = ?');
             $req->execute (array($getact));
             $donnees=$req->fetch();
         ?>
-            
             <section class="acteurs">
 
                 <!--Actor introduction-->
-                <?=('<img src="/images/'.$donnees['logo'].'"class="logo-acteur-presentation">')?>
+                <?=('<img src="images/'.$donnees['logo'].'"class="logo-acteur-presentation">')?>
 
                     <div class="texte-presentation">
                         <h3>
@@ -42,26 +63,15 @@
                                 <?= nl2br($donnees ['description']);?> 
                             </p>
                     </div>
-
-                    <?php 
-                        //SQL Request to count votes likes/dislikes
-                        $likes = $bdd->prepare('SELECT vote FROM GBAF_vote WHERE id_actor = ? AND vote= ?');
-                        $likes->execute(array($donnees['id_actor'],1));
-                        $likes = $likes->rowCount();
+                        <div class="likes_dislikes">
+                        <a href="actions/vote.php?act=<?php echo $donnees['id_actor'];?>&type=1&redirect=acteur" class="bouton-avis2" > <img src="images/like.svg"></a>
     
-                        $dislikes = $bdd->prepare('SELECT vote FROM GBAF_vote WHERE id_actor = ? AND vote= ?');
-                        $dislikes->execute(array($donnees['id_actor'],2));
-                        $dislikes = $dislikes->rowCount();
-                    ?>
+                        <?='<p class="count">'.$donnees['count_likes'].'</p>';?>
     
-                        <a href="actions/vote.php?act=<?php echo $donnees['id_actor'];?>&type=1" class="bouton-avis" onclick="play()"> <img src="/images/like.svg"></a>
+                        <a href="actions/vote.php?act=<?php echo $donnees['id_actor'];?>&type=2&redirect=acteur" class="bouton-avis2" > <img src="images/dislike.svg"></a>
     
-                        <?='<p>'.$likes.'</p>';?>
-    
-                        <a href="actions/vote.php?act=<?php echo $donnees['id_actor'];?>&type=2" class="bouton-avis" onclick="play()"> <img src="/images/dislike.svg"></a>
-    
-                        <?='<p>'.$dislikes.'</p>';?>
-
+                        <?='<p class="count">'.$donnees['count_dislikes'].'</p>';?>
+                        </div>
                         <br>
                         <a href="accueil.php" class="lien_retour"> retour à la liste des acteurs </a>
             </section>
@@ -111,17 +121,12 @@
                 }
                 //Close request
                 $req->closeCursor();
-                } 
+        
+        } 
 
-        else
-        {
-            //Redirection to Home page
-            header('Location: http://localhost:8888/accueil.php');
-
-        }      
 
         //footer
-        include("includes/footer.php"); 
+        include_once("includes/footer.php"); 
         ?>
 
     </body>
