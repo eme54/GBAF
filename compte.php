@@ -20,12 +20,12 @@ session_start();
 
 		<?php 
 		//header
-		include("includes/header-after.php"); 
+		include_once("includes/header-after.php"); 
 
 		//Main
 
 		//SQL Request to bring back user informations
-		$reponse=$bdd->query('SELECT lastname,name,username,question,answer FROM GBAF_account WHERE username="'.$_SESSION['username'].'"');
+		$reponse=$bdd->query('SELECT lastname,name,username,question,answer FROM GBAF_account WHERE id_user = "'.$_SESSION['id_user'].'"');
 		$donnees=$reponse->fetch();
 		?>
 
@@ -83,7 +83,7 @@ session_start();
 						<input type="submit" value="Modifier">
 					</p>
 					
-					<p>Changer de mot de passe&thinsp;?</p><a href="new_pass.php">Créez en un nouveau&thinsp;!</a>
+					<p>Changer de mot de passe&thinsp;?</p><a href="edit_pass.php">Créez en un nouveau&thinsp;!</a>
 
 				</form>
 
@@ -96,7 +96,7 @@ session_start();
 
 
 		//footer
-		include("includes/footer.php"); ?>
+		include_once("includes/footer.php"); ?>
 
 	</body>
 
