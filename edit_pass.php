@@ -19,7 +19,7 @@ session_start();
 
 		<?php
 		//header 
-		include_once("includes/header-before.php"); 
+		include_once("includes/header-after.php"); 
 		?>
 
 		<!--Main-->
